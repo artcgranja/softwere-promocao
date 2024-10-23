@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 import re
-from utils.config import ZARA_DATA_FIELDS
 
 def get_soup(url):
     headers = {
@@ -15,5 +14,3 @@ def get_soup(url):
 def get_product_blocks(soup, fields):
     product_blocks = soup.find_all(class_=re.compile(fields['product_block']))
     return product_blocks
-
-

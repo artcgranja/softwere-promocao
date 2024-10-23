@@ -26,6 +26,13 @@ ENGINE = create_engine(
 
 ZARA_URLS = ["https://www.zara.com/br/pt/man-special-prices-l806.html?v1=2312656", "https://www.zara.com/br/pt/woman-special-prices-l1314.html?v1=2132535"]
 
+SEPHORA_URL = {
+    'maquiagem': 'https://www.sephora.com.br/busca/?q=ofertas&pageType=hotsite&filter=discrete%3A1%3A105&page=1',
+    'perfumes': 'https://www.sephora.com.br/busca/?q=ofertas&pageType=hotsite&filter=discrete%3A1%3A82&page=1',
+    'cabelos': 'https://www.sephora.com.br/busca/?q=ofertas&pageType=hotsite&filter=discrete%3A1%3A58&page=1',
+    'skincare': 'https://www.sephora.com.br/busca/?q=ofertas&pageType=hotsite&filter=discrete%3A1%3A4&page=1',
+}
+
 ZARA_DATA_FIELDS = {
     'product_block': 'product-grid-product _product product-grid-product--ZOOM1-columns product-grid-product',
     'name': 'product-detail-info__header-name',

@@ -19,16 +19,12 @@ class Product(Base):
     link = Column(String(16777216), nullable=False)
     datetime = Column(TIMESTAMP, default=lambda: datetime.now(timezone.utc))
 
-    def __init__(self, name, description, price, price_old, colors, image_url, store, link):
+    def __init__(self, name, description, price, price_old, image_url, store, link):
         self.name = name
         self.description = description
         self.price = price
         self.price_old = price_old
-        self.colors = colors
         self.image_url = image_url
         self.store = store
         self.link = link
         self.datetime = datetime.now(timezone.utc)
-
-    def __repr__(self):
-        return f"<Product(name='{self.name}', price='{self.price}', store='{self.store}')>"

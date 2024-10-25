@@ -15,11 +15,12 @@ class Product(Base):
     price_old = Column(Float)
     colors = Column(String(16777216))
     image_url = Column(String(16777216))
-    store = Column(String(16777216), nullable=False)
     link = Column(String(16777216), nullable=False)
+    category = Column(String(16777216), nullable=False)
+    store = Column(String(16777216), nullable=False)
     datetime = Column(TIMESTAMP, default=lambda: datetime.now(timezone.utc))
 
-    def __init__(self, name, description, price, price_old, image_url, store, link):
+    def __init__(self, name, description, price, price_old, image_url, link, category, store):
         self.name = name
         self.description = description
         self.price = price
@@ -27,4 +28,5 @@ class Product(Base):
         self.image_url = image_url
         self.store = store
         self.link = link
+        self.category = category
         self.datetime = datetime.now(timezone.utc)

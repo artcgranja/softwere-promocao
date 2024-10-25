@@ -36,9 +36,9 @@ def get_product(link, store):
     description=product_description,
     price=product_price,
     price_old=product_price_old,
-    colors=product_colors_list,
     image_url=product_image_url,
     link=link,
+    category='Nan',
     store="ZARA"
     )
     return produto

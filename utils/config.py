@@ -46,3 +46,10 @@ ZARA_DATA_FIELDS = {
     'size': 'product-size-info__main-label',
     'image_url_list': 'media-image__image media__wrapper--media'
 }
+
+HERING_FEMININO_URL = {
+    'Tops': ['https://www.hering.com.br/saldos/feminino/blusas-e-regatas', 'https://www.hering.com.br/saldos/feminino/camisa', 'https://www.hering.com.br/saldos/feminino/jaquetas-e-casacos'],
+    'Bottoms': ['https://www.hering.com.br/saldos/feminino/calca', 'https://www.hering.com.br/saldos/feminino/shorts-e-bermudas'],
+    'Underwear': ['https://www.hering.com.br/intimates/saldos/pijama-feminino', 'https://www.hering.com.br/intimates/saldos/underwear-feminino'],
+    'Dresses': ['https://www.hering.com.br/saldos/feminino/vestido']
+}

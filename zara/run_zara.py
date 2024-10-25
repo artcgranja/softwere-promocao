@@ -2,7 +2,7 @@ from sqlalchemy.exc import IntegrityError
 from utils.config import ZARA_URLS, ZARA_DATA_FIELDS
 from zara.data_functions import get_product, get_links
 
-def zara(session):
+def run_zara(session):
     urls = ZARA_URLS
     products = []
     for url in urls:
@@ -16,6 +16,7 @@ def zara(session):
 
     try:
         session.commit()
+        return print(f"Produtos adicionados com sucesso: {len(products)}")
     except IntegrityError:
         session.rollback()
         print("Erro ao inserir produtos. Algum produto pode já existir no banco de dados.")

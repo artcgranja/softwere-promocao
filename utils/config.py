@@ -26,12 +26,7 @@ ENGINE = create_engine(
 
 ZARA_URLS = ["https://www.zara.com/br/pt/man-special-prices-l806.html?v1=2312656", "https://www.zara.com/br/pt/woman-special-prices-l1314.html?v1=2132535"]
 
-SEPHORA_URL = {
-    'maquiagem': 'https://www.sephora.com.br/busca/?q=ofertas&pageType=hotsite&filter=discrete%3A1%3A105&page=1',
-    'perfumes': 'https://www.sephora.com.br/busca/?q=ofertas&pageType=hotsite&filter=discrete%3A1%3A82&page=1',
-    'cabelos': 'https://www.sephora.com.br/busca/?q=ofertas&pageType=hotsite&filter=discrete%3A1%3A58&page=1',
-    'skincare': 'https://www.sephora.com.br/busca/?q=ofertas&pageType=hotsite&filter=discrete%3A1%3A4&page=1',
-}
+SEPHORA_URL = 'https://www.sephora.com.br/busca/?q=ofertas&pageType=hotsite'
 
 HERING_FEMININO_URL = {
     'Tops': ['https://www.hering.com.br/saldos/feminino/blusas-e-regatas', 'https://www.hering.com.br/saldos/feminino/camisa', 'https://www.hering.com.br/saldos/feminino/jaquetas-e-casacos'],

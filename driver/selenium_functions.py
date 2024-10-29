@@ -9,6 +9,11 @@ from selenium.webdriver.common.by import By
 def iniciar_selenium():
     opcoes = Options()
     opcoes.add_argument('--start-maximized')
+    
+    opcoes.add_experimental_option("prefs", {
+        "profile.default_content_settings.css": 2
+    })
+    
     driver_path = EdgeChromiumDriverManager().install()
     service = Service(driver_path)
     driver = webdriver.Edge(service=service, options=opcoes)

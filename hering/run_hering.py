@@ -23,12 +23,4 @@ def run_hering(session):
                     products.append(produto)
                 else:
                     continue
-
-    session.add_all(products)
-
-    try:
-        session.commit()
-        return print(f"Produtos adicionados com sucesso: {len(products)}")
-    except IntegrityError:
-        session.rollback()
-        print("Erro ao inserir produtos. Algum produto pode já existir no banco de dados.")
+    return products

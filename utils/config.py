@@ -33,6 +33,13 @@ SEPHORA_URL = {
     'skincare': 'https://www.sephora.com.br/busca/?q=ofertas&pageType=hotsite&filter=discrete%3A1%3A4&page=1',
 }
 
+HERING_FEMININO_URL = {
+    'Tops': ['https://www.hering.com.br/saldos/feminino/blusas-e-regatas', 'https://www.hering.com.br/saldos/feminino/camisa', 'https://www.hering.com.br/saldos/feminino/jaquetas-e-casacos'],
+    'Bottoms': ['https://www.hering.com.br/saldos/feminino/calca', 'https://www.hering.com.br/saldos/feminino/shorts-e-bermudas'],
+    'Underwear': ['https://www.hering.com.br/intimates/saldos/pijama-feminino', 'https://www.hering.com.br/intimates/saldos/underwear-feminino'],
+    'Dresses': ['https://www.hering.com.br/saldos/feminino/vestido']
+}
+
 ZARA_DATA_FIELDS = {
     'product_block': 'product-grid-product _product product-grid-product--ZOOM1-columns product-grid-product',
     'name': 'product-detail-info__header-name',
@@ -47,9 +54,24 @@ ZARA_DATA_FIELDS = {
     'image_url_list': 'media-image__image media__wrapper--media'
 }
 
-HERING_FEMININO_URL = {
-    'Tops': ['https://www.hering.com.br/saldos/feminino/blusas-e-regatas', 'https://www.hering.com.br/saldos/feminino/camisa', 'https://www.hering.com.br/saldos/feminino/jaquetas-e-casacos'],
-    'Bottoms': ['https://www.hering.com.br/saldos/feminino/calca', 'https://www.hering.com.br/saldos/feminino/shorts-e-bermudas'],
-    'Underwear': ['https://www.hering.com.br/intimates/saldos/pijama-feminino', 'https://www.hering.com.br/intimates/saldos/underwear-feminino'],
-    'Dresses': ['https://www.hering.com.br/saldos/feminino/vestido']
+CATEGORIES_SEPHORA = {
+    "makeup": 'Maquiagem',
+    "hair": 'Cabelos',
+    "perfumery": 'Perfumes',
+    "skincare": 'Skincare'
+}
+
+ELEMENTS_SEPHORA = {
+    'accept_cookies': '//*[@id="onetrust-accept-btn-handler"]',
+    'input_search': 'input.impulse-input.impulse-filter-search-input',
+    'card_element': 'h3.impulse-card-title',
+    'product_element': 'div.impulse-card.impulse-product-card.product.grid',
+    'show_more_itens': 'button.impulse-button.submit',
+    'brand_element': '//*[@id="product-content"]/div[1]/div/h2/a',
+    'product_name': '//*[@id="product-content"]/div[1]/div/div[3]/div/h1',
+    'price_standard': 'span.price-standard',
+    'price_sales': 'span.price-sales',
+    'description': 'div.product-description__text',
+    'category': '//*[@id="main"]/div[2]/div/div[2]/a',
+    'img': '//*[@id="pdpMain"]/div[1]/div[1]/div[2]/div[2]/div[1]/a/img'
 }

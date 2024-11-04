@@ -3,7 +3,6 @@ from models.product import Product
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from datetime import datetime, timezone
 
 def descricao_produto(driver):
     aguardar_elemento(driver, '//*[@id="product-main"]/div[1]/div[1]/section[10]/div/div')
@@ -41,7 +40,7 @@ def get_links(driver):
         links.append(link_product)
     return links
 
-def get_products(driver, link, category):
+def get_products(driver, link, category, gender=None):
     try:
         driver.get(link)
         aguardar_elemento(driver, '//*[@id="product-main"]/div[1]/div[1]/section[10]/div/div/text()[2]')
@@ -50,7 +49,7 @@ def get_products(driver, link, category):
         price = preco_produto(driver)
         price_old = preco_antigo_produto(driver)
         link_img = driver.find_element(By.CSS_SELECTOR, "img").get_attribute("src")
-        produto = Product(name, descricao, price, price_old, link_img, link, category, 'Hering')
+        produto = Product(name, descricao, price, price_old, link_img, link, category, 'Hering', gender)
     except:
         return None
     return produto

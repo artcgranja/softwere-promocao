@@ -3,6 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from models.product import Product
 import time
+import re
 
 def accept_cookies(driver, elements):
     accept_cookies = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, elements['accept_cookies'])))
@@ -32,15 +33,28 @@ def get_products(driver, elements):
         products_links.append(product_link)
     return products_links
 
-def get_products_data(driver, link, elements):
-    driver.get(link)
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, elements['brand_element'])))
-    brand = driver.find_element(By.XPATH, elements['brand_element']).text
-    product_name = driver.find_element(By.XPATH, elements['product_name']).text
-    price_standard = driver.find_element(By.CSS_SELECTOR, elements['price_standard']).text
-    price_sales = driver.find_element(By.CSS_SELECTOR, elements['price_sales']).text
-    description = driver.find_element(By.CSS_SELECTOR, elements['description']).text
-    category = driver.find_element(By.XPATH, elements['category']).text
-    image_url = driver.find_element(By.XPATH, elements['img']).get_attribute('src')
-    product = Product(product_name, description, price_sales, price_standard, image_url, link, category, brand)
-    return product
+def preco_produto(driver, elements):
+    preco_texto = driver.find_element(By.CSS_SELECTOR, elements).text
+    preco = re.search(r'R\$\s*(\d+(?:\.\d{3})*(?:,\d{2})?)', preco_texto)  # Captura valor após R$
+    if preco:
+        preco = re.sub(r'[^\d,]', '', preco.group(1))  # Limpa o valor encontrado
+        preco = float(preco.replace(',', '.'))  # Converte para float
+        return "{:.2f}".format(preco)
+    return "0.00"
+
+def get_products_data(driver, link, elements, gender=None):
+    try:
+        driver.get(link)
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, elements['brand_element'])))
+        brand = driver.find_element(By.XPATH, elements['brand_element']).text
+        product_name = driver.find_element(By.XPATH, elements['product_name']).text
+        price_standard = preco_produto(driver, elements['price_standard'])
+        price_sales = preco_produto(driver, elements['price_sales'])
+        description = driver.find_element(By.CSS_SELECTOR, elements['description']).text
+        category = driver.find_element(By.XPATH, elements['category']).text
+        image_url = driver.find_element(By.XPATH, elements['img']).get_attribute('src')
+        product = Product(product_name, description, price_sales, price_standard, image_url, link, category, brand, gender)
+        return product
+    except Exception as e:
+        print(f"Erro ao obter dados do produto {link}: {e}")
+        return None

@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from sephora.functions import accept_cookies, get_shadow_element, click_show_more, get_products, get_products_data
 from utils.config import ELEMENTS_SEPHORA, SEPHORA_URL
+from utils.util_functions import remover_duplicados_por_link
 import time
 
 def run_sephora(driver):
@@ -22,5 +23,8 @@ def run_sephora(driver):
     products = []
     for link in products_links:
         product = get_products_data(driver, link, ELEMENTS_SEPHORA)
-        products.append(product)
-    return products
+        if product:
+            products.append(product)
+        else:
+            continue
+    return remover_duplicados_por_link(products)

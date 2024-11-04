@@ -15,22 +15,27 @@ session = Session()
 driver = iniciar_selenium()
 
 def main(driver):
+    products_sephora = run_sephora(driver)
     products_zara = run_zara(driver)
     products_hering = run_hering(driver)
-    products_sephora = run_sephora(driver)
+    products_all = products_sephora + products_zara + products_hering
 
-    commit_products(products_zara)
-    commit_products(products_hering)
-    commit_products(products_sephora)
+    commit_products(products_all)
 
 def commit_products(products):
-    session.add_all(products)
     try:
-        session.commit()
-        return print(f"Produtos adicionados com sucesso: {len(products)}")
-    except IntegrityError:
-        session.rollback()
-        print("Erro ao inserir produtos. Algum produto pode já existir no banco de dados.")
+        for product in products:
+            session.add(product)
+            try:
+                session.commit()
+            except IntegrityError:
+                session.rollback()
+                print("Erro ao inserir produtos. Algum produto pode já existir no banco de dados.")
+                continue
+    except Exception as e:
+        print(f"Erro ao adicionar produtos: {e}")
+    finally:
+        print(f"Produtos adicionados com sucesso: {len(products)}")
 
 if __name__ == "__main__":
     main(driver)

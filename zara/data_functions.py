@@ -21,15 +21,13 @@ def get_links(url, store):
 
     return links
 
-def get_product(link, store):
+def get_product(link, elements, gender=None):
     soup_item = functions_file.get_soup(link)
 
-    produtc_name = zara_functions.get_product_name(soup_item, store)
-    product_description = zara_functions.get_product_description(soup_item, store)
-    product_colors_list = zara_functions.get_product_colors(soup_item, store)
-    product_size = zara_functions.get_product_size(soup_item, store)
-    product_price, product_price_old = zara_functions.get_product_price(soup_item, store)
-    product_image_url = zara_functions.get_product_image_url(soup_item, store)
+    produtc_name = zara_functions.get_product_name(soup_item, elements)
+    product_description = zara_functions.get_product_description(soup_item, elements)
+    product_price, product_price_old = zara_functions.get_product_price(soup_item, elements)
+    product_image_url = zara_functions.get_product_image_url(soup_item, elements)
 
     produto = Product(
     name=produtc_name,
@@ -39,6 +37,7 @@ def get_product(link, store):
     image_url=product_image_url,
     link=link,
     category='Nan',
-    store="ZARA"
+    store="ZARA",
+    gender=gender
     )
     return produto

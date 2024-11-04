@@ -9,14 +9,23 @@ from selenium.webdriver.common.by import By
 def iniciar_selenium():
     opcoes = Options()
     opcoes.add_argument('--start-maximized')
-    
+    opcoes.add_argument('--disable-notifications')
+    opcoes.add_argument('--disable-popup-blocking')
+    opcoes.add_argument('--incognito')
+    opcoes.add_argument('--disable-extensions')
+    opcoes.add_argument('--disable-infobars')
+    opcoes.add_argument('--disable-gpu')
+    opcoes.add_argument('--no-sandbox')
+
     opcoes.add_experimental_option("prefs", {
+        "profile.default_content_settings.popups": 0,
+        "profile.default_content_setting_values.notifications": 2,
         "profile.default_content_settings.css": 2
     })
-    
+
     driver_path = EdgeChromiumDriverManager().install()
     service = Service(driver_path)
-    driver = webdriver.Edge(service=service, options=opcoes)
+    driver = webdriver.Chrome(service=service, options=opcoes)
     
     return driver
 

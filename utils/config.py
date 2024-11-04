@@ -24,15 +24,25 @@ ENGINE = create_engine(
     )
 )
 
-ZARA_URLS = ["https://www.zara.com/br/pt/man-special-prices-l806.html?v1=2312656", "https://www.zara.com/br/pt/woman-special-prices-l1314.html?v1=2132535"]
+ZARA_URLS = {
+    "male": "https://www.zara.com/br/pt/man-special-prices-l806.html?v1=2312656", 
+    "female": "https://www.zara.com/br/pt/woman-special-prices-l1314.html?v1=2132535"
+    }
 
 SEPHORA_URL = 'https://www.sephora.com.br/busca/?q=ofertas&pageType=hotsite'
 
-HERING_FEMININO_URL = {
-    'Tops': ['https://www.hering.com.br/saldos/feminino/blusas-e-regatas', 'https://www.hering.com.br/saldos/feminino/camisa', 'https://www.hering.com.br/saldos/feminino/jaquetas-e-casacos'],
-    'Bottoms': ['https://www.hering.com.br/saldos/feminino/calca', 'https://www.hering.com.br/saldos/feminino/shorts-e-bermudas'],
-    'Underwear': ['https://www.hering.com.br/intimates/saldos/pijama-feminino', 'https://www.hering.com.br/intimates/saldos/underwear-feminino'],
-    'Dresses': ['https://www.hering.com.br/saldos/feminino/vestido']
+HERING_URLS = {
+    "female": {
+        'Tops': ['https://www.hering.com.br/saldos/feminino/blusas-e-regatas', 'https://www.hering.com.br/saldos/feminino/camisa', 'https://www.hering.com.br/saldos/feminino/jaquetas-e-casacos'],
+        'Bottoms': ['https://www.hering.com.br/saldos/feminino/calca', 'https://www.hering.com.br/saldos/feminino/shorts-e-bermudas'],
+        'Underwear': ['https://www.hering.com.br/intimates/saldos/pijama-feminino', 'https://www.hering.com.br/intimates/saldos/underwear-feminino'],
+        'Dresses': ['https://www.hering.com.br/saldos/feminino/vestido']
+    },
+    "male": {
+        'Tops': ['https://www.hering.com.br/saldos/masculino/camisetas-e-regatas', 'https://www.hering.com.br/saldos/masculino/camisa', 'https://www.hering.com.br/saldos/masculino/jaquetas-e-casacos'],
+        'Bottoms': ['https://www.hering.com.br/saldos/masculino/calca', 'https://www.hering.com.br/saldos/masculino/shorts-e-bermudas'],
+        'Underwear': ['https://www.hering.com.br/intimates/saldos/pijama-masculino', 'https://www.hering.com.br/intimates/saldos/underwear-masculino']
+    }
 }
 
 ZARA_DATA_FIELDS = {
